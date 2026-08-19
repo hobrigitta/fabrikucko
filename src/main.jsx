@@ -5,10 +5,15 @@ import {
   Check,
   ChevronRight,
   Camera,
+  CreditCard,
+  Minus,
   Menu,
+  MapPin,
   Plus,
   ShoppingBag,
   Sparkles,
+  Trash2,
+  Truck,
   X,
 } from 'lucide-react'
 import './styles.css'
@@ -25,6 +30,12 @@ const products = [
   { key: 'brush', art: 'brush' },
 ]
 
+const productCatalog = {
+  paper: { price: 3490 },
+  stamp: { price: 5990 },
+  brush: { price: 4290 },
+}
+
 const languageOptions = [
   ['hu', 'Magyar', '🇭🇺'], ['de', 'Deutsch', '🇩🇪'], ['en', 'English', '🇬🇧'],
   ['es', 'Español', '🇪🇸'], ['fr', 'Français', '🇫🇷'], ['it', 'Italiano', '🇮🇹'], ['pt', 'Português', '🇵🇹'], ['nl', 'Nederlands', '🇳🇱'],
@@ -34,6 +45,11 @@ const languageOptions = [
   ['lv', 'Latviešu', '🇱🇻'], ['lt', 'Lietuvių', '🇱🇹'], ['ga', 'Gaeilge', '🇮🇪'], ['cy', 'Cymraeg', '🏴'], ['he', 'עברית', '🇮🇱'], ['ar', 'العربية', '🇸🇦'],
   ['hi', 'हिन्दी', '🇮🇳'], ['bn', 'বাংলা', '🇧🇩'], ['id', 'Bahasa Indonesia', '🇮🇩'], ['ms', 'Bahasa Melayu', '🇲🇾'], ['sw', 'Kiswahili', '🇰🇪'], ['af', 'Afrikaans', '🇿🇦']
 ]
+const commerceCopy = {
+  hu: { cart: 'Kosár', empty: 'A kosarad még üres.', subtotal: 'Részösszeg', shipping: 'Szállítás', total: 'Végösszeg', checkout: 'Tovább a pénztárhoz', continue: 'Vásárlás folytatása', foxpost: 'Foxpost automata', gls: 'GLS házhozszállítás', transfer: 'Banki átutalás', transferNote: 'A rendelés leadása után elküldjük az átutalási adatokat.', order: 'Rendelés leadása', details: 'Szállítási adatok', name: 'Név', email: 'Email cím', phone: 'Telefonszám', address: 'Szállítási cím', locker: 'Automata / cím', note: 'Megjegyzés', close: 'Bezárás', success: 'Köszönjük a rendelésed! Hamarosan küldjük az átutalási adatokat.', processing: 'A rendelés elküldése jelenleg bemutató módban működik.' },
+  de: { cart: 'Warenkorb', empty: 'Dein Warenkorb ist leer.', subtotal: 'Zwischensumme', shipping: 'Versand', total: 'Gesamt', checkout: 'Zur Kasse', continue: 'Weiter einkaufen', foxpost: 'Foxpost Paketstation', gls: 'GLS Lieferung', transfer: 'Banküberweisung', transferNote: 'Nach der Bestellung senden wir dir die Überweisungsdaten.', order: 'Bestellung absenden', details: 'Versanddaten', name: 'Name', email: 'E-Mail', phone: 'Telefon', address: 'Lieferadresse', locker: 'Station / Adresse', note: 'Notiz', close: 'Schließen', success: 'Danke für deine Bestellung! Die Überweisungsdaten folgen bald.', processing: 'Die Bestellung läuft derzeit im Demo-Modus.' },
+  en: { cart: 'Cart', empty: 'Your cart is empty.', subtotal: 'Subtotal', shipping: 'Shipping', total: 'Total', checkout: 'Checkout', continue: 'Continue shopping', foxpost: 'Foxpost parcel locker', gls: 'GLS delivery', transfer: 'Bank transfer', transferNote: 'We will send bank details after your order is submitted.', order: 'Place order', details: 'Shipping details', name: 'Name', email: 'Email', phone: 'Phone', address: 'Shipping address', locker: 'Locker / address', note: 'Order note', close: 'Close', success: 'Thank you for your order! Bank details will follow shortly.', processing: 'Orders currently run in demo mode.' },
+}
 
 const translations = {
   hu: {
@@ -94,10 +110,18 @@ function App() {
   const [language, setLanguage] = useState(getInitialLanguage)
   const [languageOpen, setLanguageOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [cartCount, setCartCount] = useState(0)
+  const [cart, setCart] = useState([])
+  const [cartOpen, setCartOpen] = useState(false)
+  const [checkoutOpen, setCheckoutOpen] = useState(false)
+  const [shipping, setShipping] = useState('foxpost')
   const [notice, setNotice] = useState('')
   const copy = translations[language] || translations.en
+  const commerce = commerceCopy[language] || commerceCopy.en
   const selectedLanguage = languageOptions.find(([code]) => code === language) || languageOptions[2]
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
+  const cartSubtotal = cart.reduce((sum, item) => sum + productCatalog[item.key].price * item.quantity, 0)
+  const shippingCost = shipping === 'foxpost' ? 1490 : 1990
+  const cartTotal = cartSubtotal + (cart.length ? shippingCost : 0)
 
   const changeLanguage = (nextLanguage) => {
     setLanguage(nextLanguage)
@@ -105,11 +129,19 @@ function App() {
     window.localStorage.setItem('fabrikucko-language', nextLanguage)
   }
 
-  const addToCart = (name) => {
-    setCartCount((count) => count + 1)
-    setNotice(`${name} ${copy.added}`)
+  const addToCart = (key) => {
+    const product = copy.products[key]
+    setCart((items) => {
+      const existing = items.find((item) => item.key === key)
+      return existing ? items.map((item) => item.key === key ? { ...item, quantity: item.quantity + 1 } : item) : [...items, { key, quantity: 1 }]
+    })
+    setCartOpen(true)
+    setNotice(`${product.name} ${copy.added}`)
     window.setTimeout(() => setNotice(''), 2600)
   }
+
+  const updateQuantity = (key, change) => setCart((items) => items.map((item) => item.key === key ? { ...item, quantity: item.quantity + change } : item).filter((item) => item.quantity > 0))
+  const removeFromCart = (key) => setCart((items) => items.filter((item) => item.key !== key))
 
   return <div id="top" className="page-shell">
     <header className="site-header">
@@ -127,11 +159,25 @@ function App() {
             <button className="language-current" type="button" aria-label={copy.language} aria-expanded={languageOpen} onClick={() => setLanguageOpen(!languageOpen)}><span className={`language-flag flag--${selectedLanguage[0]}`} aria-hidden="true" /><span className="language-code">{selectedLanguage[0].toUpperCase()}</span><ChevronRight className={languageOpen ? 'language-chevron language-chevron--open' : 'language-chevron'} size={13} /></button>
             {languageOpen && <div className="language-dropdown" role="menu">{languageOptions.map(([code, name]) => <button className={language === code ? 'language-option language-option--active' : 'language-option'} type="button" role="menuitem" key={code} onClick={() => changeLanguage(code)}><span className={`language-flag flag--${code}`} aria-hidden="true" /><span>{name}</span>{language === code && <Check size={13} />}</button>)}</div>}
           </div>
-          <button className="cart-button" type="button" aria-label={`${copy.cart}, ${cartCount} ${copy.items}`} onClick={() => setNotice(cartCount ? `${cartCount} ${copy.items}` : copy.emptyCart)}><ShoppingBag size={19} strokeWidth={1.8} /><span>{cartCount}</span></button>
+          <button className="cart-button" type="button" aria-label={`${commerce.cart}, ${cartCount} ${copy.items}`} onClick={() => setCartOpen(true)}><ShoppingBag size={19} strokeWidth={1.8} /><span>{cartCount}</span></button>
           <button className="menu-button" type="button" aria-label="Menü megnyitása" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X size={21} /> : <Menu size={21} />}</button>
         </div>
       </div>
     </header>
+
+    {cartOpen && <div className="cart-layer" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setCartOpen(false) }}>
+      <aside className="cart-panel" aria-label={commerce.cart}>
+        <div className="cart-panel-head"><div><p className="eyebrow"><ShoppingBag size={14} /> {commerce.cart}</p><h2>{cart.length ? `${cartCount} ${copy.items}` : commerce.empty}</h2></div><button className="icon-close" type="button" onClick={() => setCartOpen(false)} aria-label={commerce.close}><X size={19} /></button></div>
+        {!cart.length ? <div className="cart-empty"><ShoppingBag size={40} strokeWidth={1.2} /><p>{commerce.empty}</p><button className="button button--outline" type="button" onClick={() => setCartOpen(false)}>{commerce.continue}</button></div> : <>
+          <div className="cart-items">{cart.map((line) => { const item = copy.products[line.key]; return <div className="cart-line" key={line.key}><div className={`cart-thumb product-art--${products.find((product) => product.key === line.key).art}`}><ProductArt art={products.find((product) => product.key === line.key).art} /></div><div className="cart-line-main"><h3>{item.name}</h3><span>{item.price}</span><div className="quantity"><button type="button" onClick={() => updateQuantity(line.key, -1)} aria-label="Kevesebb"><Minus size={13} /></button><b>{line.quantity}</b><button type="button" onClick={() => updateQuantity(line.key, 1)} aria-label="Több"><Plus size={13} /></button><button className="remove-line" type="button" onClick={() => removeFromCart(line.key)} aria-label="Termék törlése"><Trash2 size={14} /></button></div></div></div> })}</div>
+          <div className="shipping-box"><h3><Truck size={16} /> {commerce.shipping}</h3><label className={shipping === 'foxpost' ? 'shipping-option shipping-option--active' : 'shipping-option'}><input type="radio" name="shipping" value="foxpost" checked={shipping === 'foxpost'} onChange={() => setShipping('foxpost')} /><span>{commerce.foxpost}</span><strong>1 490 Ft</strong></label><label className={shipping === 'gls' ? 'shipping-option shipping-option--active' : 'shipping-option'}><input type="radio" name="shipping" value="gls" checked={shipping === 'gls'} onChange={() => setShipping('gls')} /><span>{commerce.gls}</span><strong>1 990 Ft</strong></label></div>
+          <div className="cart-summary"><p><span>{commerce.subtotal}</span><strong>{cartSubtotal.toLocaleString('hu-HU')} Ft</strong></p><p><span>{commerce.shipping}</span><strong>{shippingCost.toLocaleString('hu-HU')} Ft</strong></p><p className="cart-total"><span>{commerce.total}</span><strong>{cartTotal.toLocaleString('hu-HU')} Ft</strong></p></div>
+          <button className="button button--dark checkout-button" type="button" onClick={() => setCheckoutOpen(true)}><CreditCard size={16} /> {commerce.checkout}</button>
+        </>}
+      </aside>
+    </div>}
+
+    {checkoutOpen && <div className="modal-layer"><div className="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title"><div className="cart-panel-head"><div><p className="eyebrow"><MapPin size={14} /> {commerce.details}</p><h2 id="checkout-title">{commerce.checkout}</h2></div><button className="icon-close" type="button" onClick={() => setCheckoutOpen(false)} aria-label={commerce.close}><X size={19} /></button></div><div className="payment-note"><CreditCard size={18} /><div><strong>{commerce.transfer}</strong><span>{commerce.transferNote}</span></div></div><form className="checkout-form" onSubmit={(event) => { event.preventDefault(); setCheckoutOpen(false); setCartOpen(false); setNotice(commerce.success) }}><label>{commerce.name}<input required name="name" /></label><label>{commerce.email}<input required type="email" name="email" /></label><label>{commerce.phone}<input required type="tel" name="phone" /></label><label>{commerce.address}<input required name="address" placeholder={commerce.locker} /></label><label>{commerce.note}<textarea name="note" rows="3" /></label><p className="demo-note">{commerce.processing}</p><button className="button button--dark" type="submit">{commerce.order} <ArrowRight size={16} /></button></form></div></div>}
 
     <main>
       <section className="hero" aria-labelledby="hero-title">
@@ -154,7 +200,7 @@ function App() {
 
       <section className="shop section" id="bolt" aria-labelledby="shop-title">
         <div className="section-heading"><div><p className="eyebrow">{copy.favorites}</p><h2 id="shop-title">{copy.shopTitle}</h2></div><a className="text-link text-link--desktop" href="#bolt">{copy.goShop} <ArrowRight size={16} /></a></div>
-        <div className="product-grid">{products.map((product) => { const item = copy.products[product.key]; return <article className="product-card" key={product.key}><div className="product-image"><ProductArt art={product.art} /><span className="product-tag">{item.type}</span><button className="quick-add" type="button" aria-label={`${item.name} ${copy.add}`} onClick={() => addToCart(item.name)}><Plus size={18} /></button></div><div className="product-details"><h3>{item.name}</h3><strong>{item.price}</strong></div></article> })}</div>
+        <div className="product-grid">{products.map((product) => { const item = copy.products[product.key]; return <article className="product-card" key={product.key}><div className="product-image"><ProductArt art={product.art} /><span className="product-tag">{item.type}</span><button className="quick-add" type="button" aria-label={`${item.name} ${copy.add}`} onClick={() => addToCart(product.key)}><Plus size={18} /></button></div><div className="product-details"><h3>{item.name}</h3><strong>{item.price}</strong></div></article> })}</div>
       </section>
 
       <section className="story section" id="rolunk" aria-labelledby="story-title"><div className="story-image"><div className="story-stamp">F<br />K</div><span>{copy.storyStamp}</span></div><div className="story-copy"><p className="eyebrow">{copy.storyEyebrow}</p><h2 id="story-title">{copy.storyTitle}</h2><p>{copy.storyText}</p><a className="button button--outline" href="#kapcsolat">{copy.storyButton} <ArrowRight size={16} /></a></div></section>
