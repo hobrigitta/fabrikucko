@@ -40,7 +40,7 @@ const languageOptions = [
   ['pl', 'Polski', '🇵🇱'], ['cs', 'Čeština', '🇨🇿'], ['sk', 'Slovenčina', '🇸🇰'], ['sl', 'Slovenščina', '🇸🇮'], ['hr', 'Hrvatski', '🇭🇷'], ['sr', 'Srpski', '🇷🇸'],
   ['ro', 'Română', '🇷🇴'], ['bg', 'Български', '🇧🇬'], ['el', 'Ελληνικά', '🇬🇷'], ['tr', 'Türkçe', '🇹🇷'], ['uk', 'Українська', '🇺🇦'], ['ru', 'Русский', '🇷🇺'],
   ['sv', 'Svenska', '🇸🇪'], ['no', 'Norsk', '🇳🇴'], ['da', 'Dansk', '🇩🇰'], ['fi', 'Suomi', '🇫🇮'], ['is', 'Íslenska', '🇮🇸'], ['et', 'Eesti', '🇪🇪'],
-  ['lv', 'Latviešu', '🇱🇻'], ['lt', 'Lietuvių', '🇱🇹'], ['ga', 'Gaeilge', '🇮🇪'], ['cy', 'Cymraeg', '🏴']
+  ['lv', 'Latviešu', '🇱🇻'], ['lt', 'Lietuvių', '🇱🇹'], ['ga', 'Gaeilge', '🇮🇪'], ['cy', 'Cymraeg', '🏴'], ['mt', 'Malti', '🇲🇹']
 ]
 const commerceCopy = {
   hu: { cart: 'Kosár', empty: 'A kosarad még üres.', subtotal: 'Részösszeg', shipping: 'Szállítás', total: 'Végösszeg', checkout: 'Tovább a pénztárhoz', continue: 'Vásárlás folytatása', foxpost: 'Foxpost automata', gls: 'GLS házhozszállítás', transfer: 'Banki átutalás', transferNote: 'A rendelés leadása után elküldjük az átutalási adatokat.', order: 'Rendelés leadása', details: 'Szállítási adatok', name: 'Név', email: 'Email cím', phone: 'Telefonszám', address: 'Szállítási cím', locker: 'Automata / cím', note: 'Megjegyzés', close: 'Bezárás', success: 'Köszönjük a rendelésed! Hamarosan küldjük az átutalási adatokat.', processing: 'A rendelés elküldése jelenleg bemutató módban működik.' },
@@ -71,6 +71,43 @@ const translations = {
     storyEyebrow: 'the story of a little studio', storyTitle: 'It does not have to be perfect.', storyText: 'Fabrikuckó was born as a place where making is not performance, but restoration. A place for imperfect shapes, paint-stained hands and long conversations.', storyButton: 'Meet the makers', storyStamp: 'by hand · with heart · for you', newsletterEyebrow: 'stay in touch', newsletterTitle: 'Good things are brewing.', newsletterText: 'Once a month we send a little inspiration, new workshops and studio news.', email: 'your email address', subscribe: 'Subscribe', subscribed: 'Thanks for subscribing!', footer: 'make · connect · slow down', added: 'was added to your cart'
   }
 }
+
+translations.mt = {
+  ...translations.en,
+  studio: 'studjo kreattiv',
+  nav: ['Workshops', 'Ħanut', 'Dwarna', 'Kuntatt'],
+  language: 'Agħżel il-lingwa',
+  heroEyebrow: 'oħloq xi ħaġa li tibqa’',
+  heroTitle: <>Fejn idejk<br /><em>jibdew jirrakkuntaw.</em></>,
+  heroText: 'Workshops kreattivi, materjali sbieħ u post żgħir fejn tnaqqas ir-ritmu.',
+  workshopsButton: 'Ara l-workshops',
+  shopButton: 'Skopri l-ħanut',
+  makers: 'kreatur diġà magħna',
+  next: 'sessjoni li jmiss',
+  workshopTitle: 'Niltaqgħu fil-workshop',
+  allWorkshops: 'Dettalji tal-workshop',
+  join: 'Irreġistra',
+  saturday: 'is-Sibt',
+  illustration: 'Illustrazzjoni · tista’ tinħoloq karozza simili',
+  months: ['SET'],
+  workshops: { ...translations.en.workshops, wreath: { title: 'Oħloq dekorazzjoni tal-ħarifa', detail: 'materjali naturali · 5–6 sigħat', price: '20,000 Ft' } },
+  favorites: 'favoriti mill-istudjo',
+  shopTitle: 'Ħu d-ferħ tal-ħolqien id-dar',
+  goShop: 'Mur fil-ħanut',
+  storyEyebrow: 'l-istorja ta’ studjo żgħir',
+  storyTitle: 'M’għandux ikun perfett.',
+  storyText: 'Fabrikuckó huwa post fejn il-ħolqien iġib mistrieħ, mhux pressjoni.',
+  storyButton: 'Sir af aktar',
+  newsletterEyebrow: 'ibqa’ f’kuntatt',
+  newsletterTitle: 'Affarijiet sbieħ qed jitwieldu.',
+  newsletterText: 'Darba fix-xahar nibagħtu ispirazzjoni, workshops u aħbarijiet.',
+  email: 'l-indirizz tal-email tiegħek',
+  subscribe: 'Abbona',
+  subscribed: 'Grazzi talli abbunajt!',
+  footer: 'oħloq · qabbad · naqqas ir-ritmu'
+}
+
+commerceCopy.mt = { ...commerceCopy.en, cart: 'Qoffa', empty: 'Il-qoffa tiegħek għadha vojta.', checkout: 'Kompli għall-ħlas', continue: 'Kompli tixtri', foxpost: 'Locker Foxpost', gls: 'Kunsinna GLS', transfer: 'Trasferiment bankarju', transferNote: 'Wara li tordna nibagħtulek id-dettalji tat-trasferiment.', order: 'Ibgħat l-ordni', details: 'Dettalji tal-kunsinna', name: 'Isem', email: 'Email', phone: 'Telefon', address: 'Indirizz tal-kunsinna', locker: 'Locker / indirizz', note: 'Nota', close: 'Agħlaq', success: 'Grazzi tal-ordni tiegħek!', processing: 'L-ordnijiet bħalissa jaħdmu fil-modalità demo.' }
 
 const getInitialLanguage = () => {
   const saved = window.localStorage.getItem('fabrikucko-language')

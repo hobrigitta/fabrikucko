@@ -60,6 +60,8 @@ button { cursor: pointer; }
 .flag--lt { background: linear-gradient(#fdb913 0 33%, #006a44 33% 66%, #c1272d 66%); color: transparent; }
 .flag--ga { background: linear-gradient(90deg, #169b62 0 33%, #fff 33% 66%, #ff883e 66%); color: transparent; }
 .flag--cy { background: #f8f5ef; color: #c66e50; }
+.flag--mt { background: linear-gradient(90deg, #fff 0 50%, #cf142b 50%); position: relative; }
+.flag--mt::after { content: ''; position: absolute; width: 6px; height: 6px; left: 3px; top: 3px; border: 1px solid #b8b8b8; background: linear-gradient(90deg, transparent 42%, #b8b8b8 42% 58%, transparent 58%), linear-gradient(0deg, transparent 42%, #b8b8b8 42% 58%, transparent 58%), #fff; }
 .flag--he { background: linear-gradient(#fff 0 26%, #2b5ca8 26% 39%, #fff 39% 61%, #2b5ca8 61% 74%, #fff 74%); color: transparent; }
 .flag--ar { background: linear-gradient(#159447 0 100%); }
 .flag--hi { background: linear-gradient(#ff9933 0 33%, #fff 33% 66%, #138808 66%); color: #1d4f91; }
