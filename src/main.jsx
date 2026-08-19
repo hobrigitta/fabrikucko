@@ -69,7 +69,7 @@ const getInitialLanguage = () => {
 
 function Logo({ compact = false, studio = 'kreatív műhely' }) {
   return <a className={`logo ${compact ? 'logo--compact' : ''}`} href="#top" aria-label="Fabrikuckó főoldal">
-    <span className="logo-mark" aria-hidden="true"><span /><span /><span /></span>
+    <img className="logo-image" src="./fabrikucko-logo.png" alt="" />
     <span className="logo-word">fabrikuckó<small>{studio}</small></span>
   </a>
 }
@@ -143,8 +143,7 @@ function App() {
           <div className="hero-note"><div className="avatar-stack"><span>e</span><span>n</span><span>z</span></div><span><strong>587</strong> {copy.makers}</span></div>
         </div>
         <div className="hero-visual" aria-label="Kreatív műhely hangulata">
-          <div className="sun-disc" /><div className="hero-label hero-label--top">{copy.crafted}</div><div className="hero-label hero-label--bottom">{copy.slow}</div>
-          <div className="desk-scene"><div className="ceramic ceramic--large" /><div className="ceramic ceramic--small" /><div className="vase"><i /><i /><i /></div><div className="paint-brushes"><i /><i /><i /><i /></div><div className="greenery"><i /><i /><i /><i /><i /></div><div className="table-edge" /></div>
+          <img className="hero-logo-image" src="./fabrikucko-logo.png" alt="Fabrikuckó kézműves alkotóműhely" />
         </div>
       </section>
 
