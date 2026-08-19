@@ -34,6 +34,7 @@ button { cursor: pointer; }
 .language-current { border: 0; background: transparent; color: var(--ink); display: inline-flex; align-items: center; gap: 5px; padding: 4px 2px; font-size: 12px; }
 .language-flag { width: 24px; height: 16px; display: inline-block; overflow: hidden; border: 1px solid rgba(39,41,35,.18); border-radius: 2px; background: #71806f; font-size: 0; line-height: 0; }
 .flag--hu { background: linear-gradient(#ce2939 0 33%, #fff 33% 66%, #477050 66%); color: transparent; }
+.flag--at { background: linear-gradient(#ed2939 0 33%, #fff 33% 66%, #ed2939 66%); }
 .flag--de { background: linear-gradient(#191919 0 33%, #d1263d 33% 66%, #f5c542 66%); color: transparent; }
 .flag--en { background-color: #1d4f91; background-image: linear-gradient(90deg, transparent 38%, #fff 38% 62%, transparent 62%), linear-gradient(0deg, transparent 35%, #fff 35% 65%, transparent 65%), linear-gradient(32deg, transparent 43%, #fff 43% 49%, #c82035 49% 54%, #fff 54% 60%, transparent 60%), linear-gradient(-32deg, transparent 43%, #fff 43% 49%, #c82035 49% 54%, #fff 54% 60%, transparent 60%), linear-gradient(90deg, transparent 45%, #c82035 45% 55%, transparent 55%), linear-gradient(0deg, transparent 38%, #c82035 38% 62%, transparent 62%); }
 .flag--es { background: linear-gradient(#c60b1e 0 25%, #ffc400 25% 75%, #c60b1e 75%); color: transparent; }
@@ -42,6 +43,8 @@ button { cursor: pointer; }
 .flag--pt { background: linear-gradient(90deg, #08783f 0 40%, #d52b1e 40%); color: transparent; }
 .flag--nl, .flag--lu { background: linear-gradient(#ae1c28 0 33%, #fff 33% 66%, #21468b 66%); color: transparent; }
 .flag--pl { background: linear-gradient(#fff 0 50%, #dc143c 50%); color: transparent; }
+.flag--cs { background: linear-gradient(#fff 0 50%, #d7141a 50%); position: relative; }
+.flag--cs::after { content: ''; position: absolute; left: 0; top: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 11px solid #11457e; }
 .flag--cz, .flag--sk, .flag--sl { background: linear-gradient(#fff 0 50%, #d7141a 50%); color: #163c72; }
 .flag--hr, .flag--rs { background: linear-gradient(#ed2939 0 33%, #fff 33% 66%, #171796 66%); color: transparent; }
 .flag--ro, .flag--td { background: linear-gradient(90deg, #002b7f 0 33%, #fcd116 33% 66%, #ce1126 66%); color: transparent; }

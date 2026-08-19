@@ -35,12 +35,10 @@ const productCatalog = {
 }
 
 const languageOptions = [
-  ['hu', 'Magyar', '🇭🇺'], ['de', 'Deutsch', '🇩🇪'], ['en', 'English', '🇬🇧'],
-  ['es', 'Español', '🇪🇸'], ['fr', 'Français', '🇫🇷'], ['it', 'Italiano', '🇮🇹'], ['pt', 'Português', '🇵🇹'], ['nl', 'Nederlands', '🇳🇱'],
-  ['pl', 'Polski', '🇵🇱'], ['cs', 'Čeština', '🇨🇿'], ['sk', 'Slovenčina', '🇸🇰'], ['sl', 'Slovenščina', '🇸🇮'], ['hr', 'Hrvatski', '🇭🇷'], ['sr', 'Srpski', '🇷🇸'],
-  ['ro', 'Română', '🇷🇴'], ['bg', 'Български', '🇧🇬'], ['el', 'Ελληνικά', '🇬🇷'], ['tr', 'Türkçe', '🇹🇷'], ['uk', 'Українська', '🇺🇦'], ['ru', 'Русский', '🇷🇺'],
-  ['sv', 'Svenska', '🇸🇪'], ['no', 'Norsk', '🇳🇴'], ['da', 'Dansk', '🇩🇰'], ['fi', 'Suomi', '🇫🇮'], ['is', 'Íslenska', '🇮🇸'], ['et', 'Eesti', '🇪🇪'],
-  ['lv', 'Latviešu', '🇱🇻'], ['lt', 'Lietuvių', '🇱🇹'], ['ga', 'Gaeilge', '🇮🇪'], ['cy', 'Cymraeg', '🏴'], ['mt', 'Malti', '🇲🇹']
+  ['hu', 'Magyar', '🇭🇺'], ['at', 'Österreich', '🇦🇹'], ['de', 'Deutsch', '🇩🇪'], ['en', 'English', '🇬🇧'],
+  ['sk', 'Slovenčina', '🇸🇰'], ['cs', 'Čeština', '🇨🇿'], ['uk', 'Українська', '🇺🇦'], ['ro', 'Română', '🇷🇴'], ['sr', 'Srpski', '🇷🇸'], ['hr', 'Hrvatski', '🇭🇷'], ['sl', 'Slovenščina', '🇸🇮'],
+  ['nl', 'Nederlands', '🇳🇱'], ['fr', 'Français', '🇫🇷'], ['es', 'Español', '🇪🇸'], ['pt', 'Português', '🇵🇹'], ['no', 'Norsk', '🇳🇴'], ['sv', 'Svenska', '🇸🇪'],
+  ['da', 'Dansk', '🇩🇰'], ['fi', 'Suomi', '🇫🇮'], ['is', 'Íslenska', '🇮🇸'], ['ga', 'Gaeilge', '🇮🇪']
 ]
 const commerceCopy = {
   hu: { cart: 'Kosár', empty: 'A kosarad még üres.', subtotal: 'Részösszeg', shipping: 'Szállítás', total: 'Végösszeg', checkout: 'Tovább a pénztárhoz', continue: 'Vásárlás folytatása', foxpost: 'Foxpost automata', gls: 'GLS házhozszállítás', transfer: 'Banki átutalás', transferNote: 'A rendelés leadása után elküldjük az átutalási adatokat.', order: 'Rendelés leadása', details: 'Szállítási adatok', name: 'Név', email: 'Email cím', phone: 'Telefonszám', address: 'Szállítási cím', locker: 'Automata / cím', note: 'Megjegyzés', close: 'Bezárás', success: 'Köszönjük a rendelésed! Hamarosan küldjük az átutalási adatokat.', processing: 'A rendelés elküldése jelenleg bemutató módban működik.' },
