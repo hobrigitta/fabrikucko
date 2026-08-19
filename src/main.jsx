@@ -35,7 +35,7 @@ const productCatalog = {
 }
 
 const languageOptions = [
-  ['hu', 'Magyar', '🇭🇺'], ['at', 'Österreich', '🇦🇹'], ['de', 'Deutsch', '🇩🇪'], ['en', 'English', '🇬🇧'],
+  ['hu', 'Magyar', '🇭🇺'], ['at', 'Österreich', '🇦🇹'], ['ch', 'Schweiz', '🇨🇭'], ['be', 'België', '🇧🇪'], ['de', 'Deutsch', '🇩🇪'], ['en', 'English', '🇬🇧'],
   ['sk', 'Slovenčina', '🇸🇰'], ['cs', 'Čeština', '🇨🇿'], ['uk', 'Українська', '🇺🇦'], ['ro', 'Română', '🇷🇴'], ['sr', 'Srpski', '🇷🇸'], ['hr', 'Hrvatski', '🇭🇷'], ['sl', 'Slovenščina', '🇸🇮'],
   ['nl', 'Nederlands', '🇳🇱'], ['fr', 'Français', '🇫🇷'], ['es', 'Español', '🇪🇸'], ['pt', 'Português', '🇵🇹'], ['no', 'Norsk', '🇳🇴'], ['sv', 'Svenska', '🇸🇪'],
   ['da', 'Dansk', '🇩🇰'], ['fi', 'Suomi', '🇫🇮'], ['is', 'Íslenska', '🇮🇸'], ['ga', 'Gaeilge', '🇮🇪']
@@ -104,6 +104,9 @@ translations.mt = {
   subscribed: 'Grazzi talli abbunajt!',
   footer: 'oħloq · qabbad · naqqas ir-ritmu'
 }
+
+translations.ch = { ...translations.de, studio: 'kreatives Atelier', nav: ['Workshops', 'Shop', 'Über uns', 'Kontakt'], heroEyebrow: 'erschaffe etwas Bleibendes', heroTitle: <>Wo deine Hände<br /><em>eine Geschichte erzählen.</em></>, heroText: 'Kreative Workshops, besondere Materialien und ein Ort zum Innehalten.', workshopTitle: 'Herbstdekoration gestalten', workshops: { ...translations.de.workshops, wreath: { title: 'Herbstdekoration gestalten', detail: 'Naturmaterialien · 5–6 Stunden', price: '20.000 Ft' } }, illustration: 'Illustration · ein ähnliches Auto kann entstehen', products: { ...translations.de.products } }
+translations.be = { ...translations.nl, studio: 'creatieve studio', nav: ['Workshops', 'Winkel', 'Over ons', 'Contact'], heroEyebrow: 'maak iets blijvends', heroTitle: <>Waar je handen<br /><em>een verhaal vertellen.</em></>, heroText: 'Creatieve workshops, bijzondere materialen en een plek om te vertragen.', workshopTitle: 'Maak een herfstdecoratie', workshops: { ...translations.en.workshops, wreath: { title: 'Maak een herfstdecoratie', detail: 'natuurlijke materialen · 5–6 uur', price: '20.000 Ft' } }, illustration: 'Illustratie · een vergelijkbare auto kan ontstaan', products: { ...translations.en.products } }
 
 commerceCopy.mt = { ...commerceCopy.en, cart: 'Qoffa', empty: 'Il-qoffa tiegħek għadha vojta.', checkout: 'Kompli għall-ħlas', continue: 'Kompli tixtri', foxpost: 'Locker Foxpost', gls: 'Kunsinna GLS', transfer: 'Trasferiment bankarju', transferNote: 'Wara li tordna nibagħtulek id-dettalji tat-trasferiment.', order: 'Ibgħat l-ordni', details: 'Dettalji tal-kunsinna', name: 'Isem', email: 'Email', phone: 'Telefon', address: 'Indirizz tal-kunsinna', locker: 'Locker / indirizz', note: 'Nota', close: 'Agħlaq', success: 'Grazzi tal-ordni tiegħek!', processing: 'L-ordnijiet bħalissa jaħdmu fil-modalità demo.' }
 
