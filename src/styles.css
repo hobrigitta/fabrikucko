@@ -62,8 +62,6 @@ button { cursor: pointer; }
 .flag--cy { background: #f8f5ef; color: #c66e50; }
 .flag--mt { background: linear-gradient(90deg, #fff 0 50%, #cf142b 50%); position: relative; }
 .flag--mt::after { content: ''; position: absolute; width: 6px; height: 6px; left: 3px; top: 3px; border: 1px solid #b8b8b8; background: linear-gradient(90deg, transparent 42%, #b8b8b8 42% 58%, transparent 58%), linear-gradient(0deg, transparent 42%, #b8b8b8 42% 58%, transparent 58%), #fff; }
-.flag--he { background: linear-gradient(#fff 0 26%, #2b5ca8 26% 39%, #fff 39% 61%, #2b5ca8 61% 74%, #fff 74%); color: transparent; }
-.flag--ar { background: linear-gradient(#159447 0 100%); }
 .flag--hi { background: linear-gradient(#ff9933 0 33%, #fff 33% 66%, #138808 66%); color: #1d4f91; }
 .flag--bn { background: #006a4e; }
 .flag--ja { background: #fff; box-shadow: inset 9px 0 #bc002d, inset -9px 0 #bc002d; }
@@ -74,7 +72,6 @@ button { cursor: pointer; }
 .flag--id { background: linear-gradient(#ce1126 0 50%, #fff 50%); color: transparent; }
 .flag--ms { background: repeating-linear-gradient(0deg, #c8102e 0 2px, #fff 2px 4px); }
 .flag--sw { background: linear-gradient(#111 0 25%, #f4f5f8 25% 35%, #159447 35% 65%, #f4f5f8 65% 75%, #111 75%); color: transparent; }
-.flag--af { background: linear-gradient(#d52b1e 0 33%, #fff 33% 66%, #159447 66%); color: transparent; }
 .language-code { font-size: 9px; font-weight: 700; letter-spacing: .6px; }
 .language-chevron { transition: transform .2s ease; }
 .language-chevron--open { transform: rotate(90deg); }
