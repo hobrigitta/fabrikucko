@@ -35,7 +35,7 @@ const productCatalog = {
 }
 
 const languageOptions = [
-  ['hu', 'Magyar', '🇭🇺'], ['at', 'Österreich', '🇦🇹'], ['ch', 'Schweiz', '🇨🇭'], ['be', 'België', '🇧🇪'], ['de', 'Deutsch', '🇩🇪'], ['en', 'English', '🇬🇧'],
+  ['hu', 'Magyar', '🇭🇺'], ['at', 'Österreich', '🇦🇹'], ['de', 'Deutsch', '🇩🇪'], ['en', 'English', '🇬🇧'],
   ['sk', 'Slovenčina', '🇸🇰'], ['cs', 'Čeština', '🇨🇿'], ['uk', 'Українська', '🇺🇦'], ['ro', 'Română', '🇷🇴'], ['sr', 'Srpski', '🇷🇸'], ['hr', 'Hrvatski', '🇭🇷'], ['sl', 'Slovenščina', '🇸🇮'], ['el', 'Ελληνικά', '🇬🇷'],
   ['nl', 'Nederlands', '🇳🇱'], ['fr', 'Français', '🇫🇷'], ['es', 'Español', '🇪🇸'], ['pt', 'Português', '🇵🇹'], ['no', 'Norsk', '🇳🇴'], ['sv', 'Svenska', '🇸🇪'],
   ['da', 'Dansk', '🇩🇰'], ['fi', 'Suomi', '🇫🇮'], ['is', 'Íslenska', '🇮🇸'], ['ga', 'Gaeilge', '🇮🇪']
