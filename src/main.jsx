@@ -266,7 +266,7 @@ function App() {
       <section className="newsletter section" id="kapcsolat"><div><p className="eyebrow">{copy.newsletterEyebrow}</p><h2>{copy.newsletterTitle}</h2><p>{copy.newsletterText}</p></div><form className="signup-form" onSubmit={(event) => { event.preventDefault(); setNotice(copy.subscribed) }}><label className="sr-only" htmlFor="email">{copy.email}</label><input id="email" type="email" placeholder={copy.email} required /><button className="button button--dark" type="submit">{copy.subscribe} <ArrowRight size={16} /></button></form></section>
     </main>
 
-    <footer className="site-footer"><Logo compact studio={copy.studio} /><p>{copy.footer}</p><span>© 2024 Fabrikuckó</span></footer>
+    <footer className="site-footer"><Logo compact studio={copy.studio} /><p>{copy.footer}</p><span>© 2024 Fabrikuckó · <a href="./adatkezelesi-tajekoztato.html">Adatkezelési tájékoztató</a></span></footer>
     {notice && <div className="toast" role="status"><Check size={16} />{notice}<button type="button" aria-label="Értesítés bezárása" onClick={() => setNotice('')}><X size={14} /></button></div>}
   </div>
 }
